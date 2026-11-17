@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "@types/node": "26.x",
+    "just-bash": "^3.6.1",
     "tsx": "^4.23.15",
     "typescript": "7.0.2"
   },
