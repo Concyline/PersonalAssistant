@@ -15,8 +15,7 @@ Comece por `docs/README.md`: ele mapeia cada tarefa para a página que a cobre. 
 Use um ciclo de autoria limitado:
 
 1. Leia a página relevante e inspecione apenas os arquivos que você vai modificar ou precisa imitar.
-2. Pare a descoberta quando o local do arquivo, os imports e a forma da definição estiverem claros. Implemente o menor comportamento completo que a pessoa pediu.
-3. Rode uma verificação estreita. Expanda a investigação apenas se ela falhar ou se o pedido exigir detalhes específicos do projeto.
+2. Pare a descoberta quando o local do arquivo, os imports e a forma da definição estiverem claros. Implemente o comportamento pedido.
 
 Siga links ou inspecione tipos públicos apenas quando a página roteada deixar a tarefa sem resposta. Não faça glob recursivo em `node_modules`, não enumere a árvore inteira de docs e não leia arquivos de scaffold não relacionados quando o caminho direto é conhecido. Links de gerenciadores de pacote podem esconder arquivos de ferramentas de glob recursivo, embora leituras diretas funcionem.
 
@@ -43,18 +42,13 @@ Código de saída 0 significa que o setup terminou; 1 falhou; 2 precisa de uma r
 
 ## Use o eve para operações na Vercel
 
-Use o eve para vincular e publicar projetos na Vercel:
-
-```sh
-eve link --non-interactive --project <name-or-id> [--team <team-id-or-slug>]
-eve deploy --non-interactive --yes [--project <name-or-id>]
-```
+Use o eve para vincular e publicar projetos na Vercel. Comandos, variáveis e critérios de aceite estão em [Deploy](knowledge/operations/deploy.md).
 
 Um setup pode reportar `eve link` como pré-requisito; rode-o e tente a continuação. Quando um evento de setup concluído tiver `deploymentRequired: true`, rode o comando `next` que ele reporta.
 
-## Valide a mudança
+## Validação
 
-Rode a validação que a tarefa pede. Quando ela não estabelecer o comportamento que você mudou, rode a verificação relevante mais estreita.
+Siga o checklist do guia local da área alterada. Para mudanças que atravessam áreas, rode `npm run typecheck` e os testes dos guias afetados.
 
 ## Mapa de conhecimento (OKF)
 

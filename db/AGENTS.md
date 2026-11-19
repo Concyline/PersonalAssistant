@@ -51,7 +51,7 @@ O runner cria `_migrations`, aplica cada `.sql` uma vez e mostra as tabelas ao f
 3. Rode `npm run db:migrate`.
 4. Rode `npm run typecheck` e teste o fluxo afetado.
 5. Atualize o conceito de domínio e `knowledge/log.md`.
-6. Faça commit e deploy.
+6. Faça commit e deploy quando Áureo pedir.
 
 # Turso
 

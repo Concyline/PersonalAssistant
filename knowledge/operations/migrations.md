@@ -33,7 +33,7 @@ node --env-file=.env.local --import tsx scripts/migrate.ts
 3. Rode `npm run db:migrate`.
 4. Rode `npm run typecheck` e teste o fluxo.
 5. Atualize o conceito de domínio e `knowledge/log.md`.
-6. Commit e deploy.
+6. Commit e deploy quando Áureo pedir.
 
 # Regras
 
