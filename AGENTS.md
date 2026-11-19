@@ -1,57 +1,83 @@
 # eve Agent App
 
-This project uses the eve framework: an agent is a directory of files under `agent/`, and eve compiles and runs it.
+Este projeto usa o framework eve: um agente é um diretório de arquivos em `agent/`, que o eve compila e executa.
 
-For a content-only change to the root agent's identity, purpose, tone, or response guidelines, edit its existing authored instructions. Fresh projects use `agent/instructions.md`; a project may instead use `agent/instructions.ts` or files under `agent/instructions/`. You do not need to read the framework docs for a content-only instructions change. A fresh project already has its selected model in `agent/agent.ts`; preserve that file unless the user asks to change the model.
+Para uma mudança apenas de conteúdo na identidade, propósito, tom ou diretrizes de resposta do agente raiz, edite as instruções autorais existentes. Projetos novos usam `agent/instructions.md`; um projeto pode usar `agent/instructions.ts` ou arquivos em `agent/instructions/`. Você não precisa ler a documentação do framework para uma mudança apenas de conteúdo nas instruções. Um projeto novo já tem o modelo escolhido em `agent/agent.ts`; preserve esse arquivo a menos que a pessoa peça para trocar o modelo.
 
-## Read the docs before writing code
+## Leia a documentação antes de escrever código
 
 ```sh
 ls node_modules/eve/docs
 ```
 
-Start with `docs/README.md`: it maps each task to the page that covers it. Read that page before authoring tools, connections, channels, skills, subagents, schedules, or deployment. In a workspace or local package install, resolve the installed `eve` package location first. If the package docs are missing, use https://eve.dev/docs.
+Comece por `docs/README.md`: ele mapeia cada tarefa para a página que a cobre. Leia essa página antes de criar tools, connections, channels, skills, subagents, schedules ou deployment. Em um workspace ou instalação local do pacote, resolva primeiro o local do pacote `eve` instalado. Se a documentação do pacote não existir, use https://eve.dev/docs.
 
-Use a bounded authoring loop:
+Use um ciclo de autoria limitado:
 
-1. Read the relevant page and inspect only files you will modify or need to imitate.
-2. Stop discovery once the file location, imports, and definition shape are clear. Implement the smallest complete behavior the user requested.
-3. Run one narrow verification. Expand investigation only when it fails or the request needs project-specific details.
+1. Leia a página relevante e inspecione apenas os arquivos que você vai modificar ou precisa imitar.
+2. Pare a descoberta quando o local do arquivo, os imports e a forma da definição estiverem claros. Implemente o menor comportamento completo que a pessoa pediu.
+3. Rode uma verificação estreita. Expanda a investigação apenas se ela falhar ou se o pedido exigir detalhes específicos do projeto.
 
-Follow links or inspect public types only when the routed page leaves the task unanswered. Do not recursively glob `node_modules`, enumerate the entire docs tree, or read unrelated scaffold files when the direct path is known. Package-manager links can hide files from recursive glob tools even though direct reads work.
+Siga links ou inspecione tipos públicos apenas quando a página roteada deixar a tarefa sem resposta. Não faça glob recursivo em `node_modules`, não enumere a árvore inteira de docs e não leia arquivos de scaffold não relacionados quando o caminho direto é conhecido. Links de gerenciadores de pacote podem esconder arquivos de ferramentas de glob recursivo, embora leituras diretas funcionem.
 
-Keep the bundle small: import SDK clients inside the functions that use them, and keep one version of each dependency. See `docs/guides/deployment/index.md#keep-the-bundle-small`.
+Mantenha o bundle pequeno: importe clientes de SDK dentro das funções que os usam e mantenha uma versão de cada dependência. Veja `docs/guides/deployment/index.md#keep-the-bundle-small`.
 
-## Prefer an existing integration
+## Prefira uma integração existente
 
-When a task names an external product or service, search the registry before implementing its integration. For a generic capability, author a tool instead.
+Quando a tarefa nomear um produto ou serviço externo, procure no registry antes de implementar a integração. Para uma capacidade genérica, crie uma tool.
 
 ```sh
 eve registry search <query> --json
 eve registry view <item>
 ```
 
-Prefer items whose `implementation` is `native`; use Chat SDK adapters when no native channel fits. `registry view` links the item's documentation.
+Prefira itens cujo `implementation` seja `native`; use adaptadores do Chat SDK quando nenhum canal nativo servir. `registry view` linka a documentação do item.
 
-Install without driving interactive prompts:
+Instale sem conduzir prompts interativos:
 
 ```sh
 eve add <item> --non-interactive
 ```
 
-Exit code 0 means setup completed, 1 failed, and 2 needs an answer or a prerequisite. On exit 2, run the `next.command` from the final NDJSON event. For a non-secret question, replace its `<JSON value>` answer placeholder with the answer you collected; string values need JSON quotes. Never pass a secret in `--answer`. See `docs/install-integrations.mdx` for setup prerequisites.
+Código de saída 0 significa que o setup terminou; 1 falhou; 2 precisa de uma resposta ou pré-requisito. No exit 2, rode o `next.command` do último evento NDJSON. Para uma pergunta não secreta, substitua o placeholder de resposta `<JSON value>` pela resposta que você coletou; valores string precisam de aspas JSON. Nunca passe um segredo em `--answer`. Veja `docs/install-integrations.mdx` para pré-requisitos de setup.
 
-## Use eve for Vercel operations
+## Use o eve para operações na Vercel
 
-Use eve to link and deploy Vercel projects:
+Use o eve para vincular e publicar projetos na Vercel:
 
 ```sh
 eve link --non-interactive --project <name-or-id> [--team <team-id-or-slug>]
 eve deploy --non-interactive --yes [--project <name-or-id>]
 ```
 
-A setup may report `eve link` as a prerequisite; run it, then retry the continuation. When a completed setup event has `deploymentRequired: true`, run the `next` command it reports.
+Um setup pode reportar `eve link` como pré-requisito; rode-o e tente a continuação. Quando um evento de setup concluído tiver `deploymentRequired: true`, rode o comando `next` que ele reporta.
 
-## Validate the change
+## Valide a mudança
 
-Run the validation the task requests. When it does not establish the behavior you changed, run the narrowest relevant check.
+Rode a validação que a tarefa pede. Quando ela não estabelecer o comportamento que você mudou, rode a verificação relevante mais estreita.
+
+## Mapa de conhecimento (OKF)
+
+O conhecimento durável deste projeto vive em `knowledge/`, um bundle OKF v0.2. Leia `knowledge/index.md` primeiro e abra apenas os conceitos necessários — não carregue o bundle inteiro.
+
+| Onde | Tipo | Use quando |
+| --- | --- | --- |
+| [`knowledge/index.md`](knowledge/index.md) | índice do bundle | precisar de contexto de produto, arquitetura, domínio, decisões ou operações |
+| [`agent/AGENTS.md`](agent/AGENTS.md) | guia local | criar ou alterar instructions, tools, channels ou schedules |
+| [`lib/AGENTS.md`](lib/AGENTS.md) | guia local | alterar regras de domínio, banco, tempo ou notificações |
+| [`db/AGENTS.md`](db/AGENTS.md) | guia local | criar migração ou mexer no schema |
+| [`knowledge/operations/commits.md`](knowledge/operations/commits.md) | padrão | escrever mensagem de commit |
+
+Os documentos em `knowledge/references/` são fontes históricas. A fonte de verdade atual é o bundle; se algum deles divergir do código, o código e os conceitos de domínio vencem.
+
+## Convenções do bundle OKF
+
+- Todo conceito em `knowledge/` é um arquivo `.md` com frontmatter YAML e o campo `type`.
+- `index.md` e `log.md` são nomes reservados; não crie conceitos com esses nomes.
+- Links entre conceitos são absolutos em relação à raiz do bundle: `/domain/tasks.md`.
+- Links para código usam caminho relativo: `../../lib/tasks.ts`.
+- Use `status: draft` para o que ainda não existe no código, `stable` para o que existe e `deprecated` para o obsoleto.
+- `generated` registra quem escreveu e quando; `verified` só entra depois de revisão humana.
+- Ao mudar comportamento, atualize o conceito correspondente e registre em `knowledge/log.md` no mesmo commit.
+- Não duplique fatos dos documentos históricos em `knowledge/references/`; mova o fato para o bundle e deixe um link.
+- Segredos nunca entram no bundle: apenas nomes de variáveis de ambiente.

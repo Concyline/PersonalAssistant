@@ -16,6 +16,10 @@ Start by editing `agent/instructions.md` to define the agent's identity, purpose
 
 Add capabilities under `agent/`, including tools, connections, channels, skills, subagents, and schedules. eve reloads your changes as you work.
 
+## Project knowledge
+
+Durable project knowledge lives in [`knowledge/`](knowledge/index.md) as an Open Knowledge Format (OKF) v0.2 bundle. Start at the index and open only the concepts you need.
+
 ## Learn more
 
 To learn more about eve, explore these resources:

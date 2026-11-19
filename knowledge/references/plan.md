@@ -1,4 +1,14 @@
+---
+type: Project Plan
+title: Plano de Projeto — Assistente Pessoal
+description: Plano original do v1, mantido como referência histórica.
+tags: [plano, historico, produto]
+status: deprecated
+---
+
 # Plano de Projeto — Assistente Pessoal
+
+> **Documento histórico.** A fonte de verdade atual é [`../index.md`](../index.md). Este plano pode conter itens ainda não implementados; consulte o `status` dos conceitos de domínio.
 
 **Stack:** eve (Vercel) · Telegram · Turso (libSQL) · Vercel Blob
 **Status:** v1 em construção
@@ -186,7 +196,7 @@ Regras:
 `.env.local` (nunca commitado):
 
 ```env
-TURSO_DATABASE_URL=libsql://asistentepessoal-concyline.aws-sa-east-1.turso.io
+TURSO_DATABASE_URL=libsql://<seu-banco>.aws-sa-east-1.turso.io
 TURSO_AUTH_TOKEN=...
 ```
 
