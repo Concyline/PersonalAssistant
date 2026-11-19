@@ -1453,10 +1453,10 @@ npx eve deploy --non-interactive --yes
 
 ### Convenção de commits usada
 
-Conventional Commits 1.0.0 com prefixo de emoji. A regra completa, os tipos e
+Conventional Commits com emoji antes do tipo. A regra completa, os tipos e
 os exemplos estão em [Commits](/operations/commits.md).
 
-Exemplos reais: `feat: canal Telegram e lembretes automaticos`,
+Exemplos reais anteriores a esta regra: `feat: canal Telegram e lembretes automaticos`,
 `docs: renomeia persona de LumIA para ZaIA`.
 
 ---

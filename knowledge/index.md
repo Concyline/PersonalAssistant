@@ -38,7 +38,7 @@ Este bundle guarda o conhecimento durável da ZaIA. Leia este índice primeiro e
 
 * [Deploy](operations/deploy.md) - Vercel, env vars e verificação.
 * [Migrações](operations/migrations.md) - schema, runner e Turso.
-* [Commits](operations/commits.md) - Conventional Commits 1.0.0 com emoji por tipo.
+* [Commits](operations/commits.md) - Conventional Commits com emoji antes do tipo.
 * [Troubleshooting](operations/troubleshooting.md) - sintomas, causas e correções.
 
 # Referências históricas

@@ -9,3 +9,4 @@
 * **Update**: Movidos `PLAN.md` e `passo_a_passo.md` para `knowledge/references/`, com frontmatter OKF e links atualizados.
 * **Creation**: Adicionado `knowledge/operations/commits.md` com Conventional Commits 1.0.0 e emoji por tipo.
 * **Update**: `knowledge/index.md` e `knowledge/references/passo-a-passo.md` passaram a apontar para a regra de commits.
+* **Update**: Convenção de commits alinhada à máquina (emoji antes do tipo); README, índice e referência histórica ajustados.

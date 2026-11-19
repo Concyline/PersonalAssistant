@@ -165,7 +165,7 @@ O conhecimento durável do projeto vive em [`knowledge/`](knowledge/index.md), u
 | [Entradas](knowledge/domain/entries.md) · [Projetos](knowledge/domain/projects.md) | segundo cérebro |
 | [Telegram](knowledge/integrations/telegram.md) | webhook, allowlist e áudio |
 | [Deploy](knowledge/operations/deploy.md) · [Migrações](knowledge/operations/migrations.md) | operação |
-| [Commits](knowledge/operations/commits.md) | Conventional Commits com emoji |
+| [Commits](knowledge/operations/commits.md) | Conventional Commits com emoji antes do tipo |
 
 ## 🗺️ Status do projeto
 
@@ -177,12 +177,12 @@ O conhecimento durável do projeto vive em [`knowledge/`](knowledge/index.md), u
 
 ## 🧑‍💻 Commits
 
-O repositório segue [Conventional Commits](knowledge/operations/commits.md) com um emoji por tipo:
+O repositório segue [Conventional Commits](knowledge/operations/commits.md) com um emoji antes do tipo:
 
 ```text
-feat(telegram): ✨ adiciona lembretes automáticos
-fix(reminders): 🐛 evita reenvio após marcar sent_at
-docs: 📝 atualiza o README de apresentação
+✨ feat(telegram): adiciona lembretes automáticos
+🐛 fix(reminders): evita reenvio após marcar sent_at
+📝 docs: atualiza o README de apresentação
 ```
 
 ---
